@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/main_toolbar"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/records_LAY_map"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_weight="2"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/splash_BTN_start"
+
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="15dp"
+                android:text="@string/add_package"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:cornerRadius="50dp"
+                app:iconGravity="end"
+                app:iconTint="@color/black"
+                app:strokeColor="@color/black"
+                android:shadowColor="@color/black"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/splash_BTN_track"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="15dp"
+                android:text="@string/track"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:cornerRadius="50dp"
+                app:iconGravity="end"
+                app:iconTint="@color/black"
+                app:strokeColor="@color/black"
+                android:shadowColor="@color/black"
+                />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/white">
+
+        <include
+            layout="@layout/main_nav_drawer"/>
+
+    </RelativeLayout>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

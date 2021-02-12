@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Tsquare Express</string>
+    <string name="get_started">Get Started</string>
+    <string name="add_package">Add Package</string>
+    <string name="title_location_permission">Need Location Permission</string>
+    <string name="text_location_permission">Please allow location services in order to use the Application</string>
+    <string name="ok">Accept</string>
+    <string name="list_deliveries">Delivery List</string>
+    <string name="history">History</string>
+    <string name="map">Map</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="log_off">Log off</string>
+    <string name="track">Track</string>
+</resources>

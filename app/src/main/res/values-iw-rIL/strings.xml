@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tsquare Express</string>
+    <string name="get_started">התחל</string>
+    <string name="add_package">הוסף חבילה</string>
+    <string name="title_location_permission">נדרשים נתוני מיקום</string>
+    <string name="text_location_permission">נא לאשר נתוני מיקום בכדי להשתמש באפליקציה</string>
+    <string name="ok">אישור</string>
+    <string name="list_deliveries">רשימת נקודות משלוח</string>
+    <string name="history">היסטוריה</string>
+    <string name="map">מפה</string>
+    <string name="personal_details">פרטים אישיים</string>
+    <string name="log_off">התנתקות</string>
+    <string name="track">עקוב</string>
+</resources>
