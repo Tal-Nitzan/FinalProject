@@ -12,4 +12,7 @@
     <string name="personal_details">פרטים אישיים</string>
     <string name="log_off">התנתקות</string>
     <string name="track">עקוב</string>
+    <string name="sign_in_cancelled">התחברות נכשלה</string>
+    <string name="no_internet_connection">אין חיבור אינטרנט</string>
+    <string name="unknown_error">תקלה לא ידועה</string>
 </resources>

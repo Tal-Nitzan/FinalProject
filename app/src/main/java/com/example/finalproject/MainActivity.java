@@ -26,7 +26,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     String provider;
     DrawerLayout drawerLayout;
     MaterialButton splash_BTN_track;
+    MaterialButton main_btn_addPackage;
 
 
     @Override
@@ -64,11 +70,22 @@ public class MainActivity extends AppCompatActivity {
                 fragment_map.toggleTracking();
             }
         });
+
+        main_btn_addPackage.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Activity_AddDelivery.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void findViews() {
         drawerLayout = findViewById(R.id.drawer_layout);
         splash_BTN_track = findViewById(R.id.splash_BTN_track);
+        main_btn_addPackage = findViewById(R.id.main_btn_addPackage);
     }
 
 
@@ -112,34 +129,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ClickLogOff(View view) {
-        logout(this);
+        Utils.logout(this);
         Log.d("pttt", "got here");
-    }
-
-    public void logout(Activity activity) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle("Logout");
-
-        builder.setMessage("Are you sure you want to log out ?");
-
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(activity, Activity_Login.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        builder.show();
     }
 
     public static void redirectActivity(Activity activity, Class aClass) {

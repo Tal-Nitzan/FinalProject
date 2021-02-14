@@ -11,4 +11,7 @@
     <string name="personal_details">Personal Details</string>
     <string name="log_off">Log off</string>
     <string name="track">Track</string>
+    <string name="sign_in_cancelled">Sign In Cancelled</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="unknown_error">unknown error</string>
 </resources>

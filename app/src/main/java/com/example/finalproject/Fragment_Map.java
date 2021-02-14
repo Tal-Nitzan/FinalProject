@@ -160,6 +160,9 @@ public class Fragment_Map extends SupportMapFragment implements OnMapReadyCallba
 
             } else {
                 // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_PERMISSIONS_REQUEST_LOCATION );
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setMessage("Please allow Location permission in settings")
                         .setCancelable(false)
@@ -170,9 +173,6 @@ public class Fragment_Map extends SupportMapFragment implements OnMapReadyCallba
                         });
                 AlertDialog alert = builder.create();
                 alert.show();
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_LOCATION );
             }
         }
     }
