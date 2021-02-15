@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Utils {
 
+    public Utils() {}
+
     public static void logout(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Logout");

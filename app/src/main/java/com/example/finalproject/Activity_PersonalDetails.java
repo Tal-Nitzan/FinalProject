@@ -19,6 +19,7 @@ public class Activity_PersonalDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_details);
 
+
         drawerLayout = findViewById(R.id.drawer_layout);
     }
 

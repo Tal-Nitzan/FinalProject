@@ -20,6 +20,7 @@ public class Activity_History extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
+
         drawerLayout = findViewById(R.id.drawer_layout);
     }
 

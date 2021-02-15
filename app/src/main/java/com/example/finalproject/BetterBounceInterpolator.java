@@ -8,6 +8,7 @@ public class BetterBounceInterpolator implements Interpolator {
     private int mBounces;
     private double mEnergy;
 
+
     /** Have more control over how to bounce your values.
      *
      */
