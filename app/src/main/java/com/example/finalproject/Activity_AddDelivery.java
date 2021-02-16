@@ -16,11 +16,16 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class Activity_AddDelivery extends AppCompatActivity {
+
+    private DatabaseReference mDatabase; //test
+
     EditText editText;
     TextView textView1;
     TextView textView2;
@@ -29,6 +34,8 @@ public class Activity_AddDelivery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_delivery);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference(); //test
 
         editText = findViewById(R.id.edit_text);
         textView1 = findViewById(R.id.text_view);
@@ -45,6 +52,9 @@ public class Activity_AddDelivery extends AppCompatActivity {
                 List<Place.Field> fieldList = Arrays.asList(Place.Field.ADDRESS, Place.Field.LAT_LNG,Place.Field.NAME);
                 Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fieldList).build(Activity_AddDelivery.this);
                 startActivityForResult(intent, 100);
+
+                mDatabase.child("users").child("UserID").child("Locations").push().setValue("A Point"); //test
+                mDatabase.child("users").child("UserID").child("Locations").push().setValue("Another Point"); //test
             }
         });
     }
