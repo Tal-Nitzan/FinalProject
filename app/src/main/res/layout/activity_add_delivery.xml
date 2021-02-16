@@ -21,23 +21,74 @@
         android:gravity="center_vertical"
         />
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/addDelivery_EDT_inputName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/text_view"
-        android:textColor="@color/design_default_color_primary"
-        android:fontFamily="monospace"
-        android:padding="12dp"
-        android:layout_marginTop="32dp"/>
+        android:layout_marginTop="20dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusTopStart="12dp"
+        app:placeholderText="John Travolta"
+        android:hint="Reciever Name">
 
-    <TextView
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="7"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/addDelivery_EDT_inputPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/text_view2"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:padding="12dp"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="20dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusTopStart="12dp"
+        app:placeholderText="+972 55 1234567"
+        android:hint="Phone Number">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="7"
+            android:inputType="phone" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/addDelivery_EDT_inputWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusTopStart="12dp"
+        app:placeholderText="4.4"
+        android:hint="Weight in KG">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="7"
+            android:inputType="numberDecimal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addDelivery_BTN_submit"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:theme="@style/Theme.MaterialComponents.Light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/track"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:cornerRadius="50dp"
+        app:iconGravity="end"
+        app:iconTint="@color/black"
+        app:strokeColor="@color/black"
+        android:shadowColor="@color/black"/>
 
 </LinearLayout>

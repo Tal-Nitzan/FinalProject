@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +18,10 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,8 +33,13 @@ public class Activity_AddDelivery extends AppCompatActivity {
     private DatabaseReference mDatabase; //test
 
     EditText editText;
-    TextView textView1;
-    TextView textView2;
+    Button addDelivery_BTN_submit;
+    private TextInputLayout addDelivery_EDT_inputName;
+    private TextInputLayout addDelivery_EDT_inputPhone;
+    private TextInputLayout addDelivery_EDT_inputWeight;
+
+    String address;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +48,25 @@ public class Activity_AddDelivery extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference(); //test
 
+        findViews();
+        initViews();
+
+
+        Places.initialize(getApplicationContext(), "AIzaSyDuooLeJ259V3F_V4Eh9Z-qFK169XFqXI8");
+
+    }
+
+
+
+    private void findViews() {
         editText = findViewById(R.id.edit_text);
-        textView1 = findViewById(R.id.text_view);
-        textView2 = findViewById(R.id.text_view2);
+        addDelivery_BTN_submit = findViewById(R.id.addDelivery_BTN_submit);
+        addDelivery_EDT_inputName = findViewById(R.id.addDelivery_EDT_inputName);
+        addDelivery_EDT_inputPhone = findViewById(R.id.addDelivery_EDT_inputPhone);
+        addDelivery_EDT_inputWeight = findViewById(R.id.addDelivery_EDT_inputWeight);
+    }
 
-        Places.initialize(getApplicationContext(), "AIzaSyCMOY2aSN3GOhaEEJZa0hpLuZlCCxRllDQ");
-
+    private void initViews() {
 
         editText.setFocusable(false);
         editText.setOnClickListener(new View.OnClickListener() {
@@ -52,11 +76,37 @@ public class Activity_AddDelivery extends AppCompatActivity {
                 List<Place.Field> fieldList = Arrays.asList(Place.Field.ADDRESS, Place.Field.LAT_LNG,Place.Field.NAME);
                 Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fieldList).build(Activity_AddDelivery.this);
                 startActivityForResult(intent, 100);
-
-                mDatabase.child("users").child("UserID").child("Locations").push().setValue("A Point"); //test
-                mDatabase.child("users").child("UserID").child("Locations").push().setValue("Another Point"); //test
             }
         });
+
+        addDelivery_BTN_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submitClicked();
+            }
+        });
+    }
+
+
+    private void submitClicked() {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        String uid = firebaseUser.getUid();
+
+        String phoneNumber = addDelivery_EDT_inputPhone.getEditText().getText().toString();
+        String receiverName = addDelivery_EDT_inputName.getEditText().getText().toString();
+        float weight = Float.parseFloat(addDelivery_EDT_inputWeight.getEditText().getText().toString());
+        Delivery delivery = new Delivery()
+                .setPhoneNumber(phoneNumber)
+                .setAddress(address)
+                .setReceiverName(receiverName)
+                .setWeight(weight);
+        // Push to DB
+        mDatabase.child("users").child(uid).child("deliveries").push().setValue(delivery); //test
+        Log.d("xxxx", "Got parameters: Address - " + address + "| Phone Number - " + phoneNumber + "| Receiver name - " + receiverName + "| Weight - " + weight);
+        Intent intent = new Intent(Activity_AddDelivery.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -65,8 +115,7 @@ public class Activity_AddDelivery extends AppCompatActivity {
         if (requestCode == 100 && resultCode == RESULT_OK) {
            Place place = Autocomplete.getPlaceFromIntent(data);
            editText.setText(place.getAddress());
-           textView1.setText(String.format("Locality Name : %s", place.getName()));
-           textView2.setText(String.valueOf(place.getLatLng()));
+           address = place.getAddress();
         } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
             Status status = Autocomplete.getStatusFromIntent(data);
             Toast.makeText(getApplicationContext(), status.getStatusMessage(),Toast.LENGTH_LONG).show();
