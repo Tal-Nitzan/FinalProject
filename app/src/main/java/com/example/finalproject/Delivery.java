@@ -2,14 +2,38 @@ package com.example.finalproject;
 
 import android.location.Location;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Delivery {
 
     String receiverName;
     String address;
     String phoneNumber;
     float weight;
+    Date deliveryDate;
+    String deliveryDateString;
 
-    public Delivery() {}
+    public Delivery() {
+    }
+
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public Delivery setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
+        return this;
+    }
+
+    public String getDeliveryDateString() {
+        return deliveryDateString;
+    }
+
+    public Delivery setDeliveryDateString(String deliveryDateString) {
+        this.deliveryDateString = deliveryDateString;
+        return this;
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;

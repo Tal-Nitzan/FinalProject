@@ -25,7 +25,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class Activity_AddDelivery extends AppCompatActivity {
@@ -96,14 +98,17 @@ public class Activity_AddDelivery extends AppCompatActivity {
         String phoneNumber = addDelivery_EDT_inputPhone.getEditText().getText().toString();
         String receiverName = addDelivery_EDT_inputName.getEditText().getText().toString();
         float weight = Float.parseFloat(addDelivery_EDT_inputWeight.getEditText().getText().toString());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        Date todayDate = new Date();
+        String todayDateString = sdf.format(todayDate);
         Delivery delivery = new Delivery()
                 .setPhoneNumber(phoneNumber)
                 .setAddress(address)
                 .setReceiverName(receiverName)
-                .setWeight(weight);
-        // Push to DB
-        mDatabase.child("users").child(uid).child("deliveries").push().setValue(delivery); //test
-        Log.d("xxxx", "Got parameters: Address - " + address + "| Phone Number - " + phoneNumber + "| Receiver name - " + receiverName + "| Weight - " + weight);
+                .setWeight(weight)
+                .setDeliveryDateString(todayDateString)
+                .setDeliveryDate(todayDate);
+        mDatabase.child("users").child(uid).child("deliveries").push().setValue(delivery);
         Intent intent = new Intent(Activity_AddDelivery.this, MainActivity.class);
         startActivity(intent);
         finish();
