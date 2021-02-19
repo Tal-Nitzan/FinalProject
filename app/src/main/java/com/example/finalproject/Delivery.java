@@ -5,6 +5,9 @@ import android.location.Location;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
+enum STATE {PENDING,COMPLETED, CANCELLED}
+
 public class Delivery {
 
     String id;
@@ -14,8 +17,19 @@ public class Delivery {
     float weight;
     Date deliveryDate;
     String deliveryDateString;
+    STATE state;
+
 
     public Delivery() {
+    }
+
+    public STATE getState() {
+        return state;
+    }
+
+    public Delivery setState(STATE state) {
+        this.state = state;
+        return this;
     }
 
     public String getId() {

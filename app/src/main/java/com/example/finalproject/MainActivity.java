@@ -125,6 +125,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void ClickCanceled(View view) {
+        redirectActivity(this, Activity_Cancelled.class);
+    }
+
     public void ClickPersonalDetails(View view) {
         redirectActivity(this, Activity_PersonalDetails.class);
     }

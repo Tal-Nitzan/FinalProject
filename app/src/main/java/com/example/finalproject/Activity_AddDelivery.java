@@ -107,8 +107,9 @@ public class Activity_AddDelivery extends AppCompatActivity {
                 .setReceiverName(receiverName)
                 .setWeight(weight)
                 .setDeliveryDateString(todayDateString)
-                .setDeliveryDate(todayDate);
-        mDatabase.child("users").child(uid).child("deliveries").push().setValue(delivery);
+                .setDeliveryDate(todayDate)
+                .setState(STATE.PENDING);
+        mDatabase.child("users").child(uid).child(Utils.databaseStates[0]).push().setValue(delivery);
         Intent intent = new Intent(Activity_AddDelivery.this, MainActivity.class);
         startActivity(intent);
         finish();

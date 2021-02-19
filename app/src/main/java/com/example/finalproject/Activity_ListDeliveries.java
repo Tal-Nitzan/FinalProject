@@ -48,10 +48,6 @@ public class Activity_ListDeliveries extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         listDeliveries_LBL_noDeliveries = findViewById(R.id.listDeliveries_LBL_noDeliveries);
         listDeliveries_LST_deliveries = findViewById(R.id.listDeliveries_LST_deliveries);
-//        listDeliveries_LBL_noDeliveries.setVisibility(View.INVISIBLE);
-        // get deliveries from DB TODO
-//        ArrayList<Delivery> deliveries = DeliveriesMockDB.generateDeliveries();
-
         fetchDeliveriesFromDB(this, deliveries);
     }
 
@@ -59,7 +55,7 @@ public class Activity_ListDeliveries extends AppCompatActivity {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String uid = firebaseUser.getUid();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("users").child(uid).child("deliveries");
+        DatabaseReference myRef = database.getReference("users").child(uid).child(Utils.databaseStates[0]);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -67,43 +63,33 @@ public class Activity_ListDeliveries extends AppCompatActivity {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     Delivery delivery = postSnapshot.getValue(Delivery.class);
                     delivery.setId(postSnapshot.getKey());
-                    deliveries.add(delivery);
-                    Adapter_Delivery adapter_delivery = new Adapter_Delivery(context, deliveries);
-                    adapter_delivery.setClickListener(new Adapter_Delivery.MyItemClickListener() {
-                        @Override
-                        public void onItemClick(View view, int position) {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                            builder.setTitle("Remove Delivery");
+                    if (delivery.getState() == STATE.PENDING) {
+                        deliveries.add(delivery);
+                        Adapter_Delivery adapter_delivery = new Adapter_Delivery(context, deliveries);
+                        adapter_delivery.setClickListener(new Adapter_Delivery.MyItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                String[] states = {"Delivered", "Cancelled"};
+                                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                                builder.setTitle("Change state of delivery");
+                                builder.setItems(states, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        delivery.setState(STATE.values()[which + 1]);
+                                        DatabaseReference newRef = database.getReference("users").child(uid).child(Utils.databaseStates[which+1]);
+                                        newRef.push().setValue(delivery);
+                                        myRef.child(deliveries.get(position).getId()).removeValue();
+                                        deliveries.remove(position);
+                                        adapter_delivery.notifyDataSetChanged();
+                                    }
+                                });
+                                builder.show();
+                            }
 
-                            builder.setMessage("Are you sure you want to remove the delivery to " + delivery.getAddress() + "?");
-
-                            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    myRef.child(deliveries.get(position).getId()).removeValue();
-                                    deliveries.remove(position);
-                                    adapter_delivery.notifyDataSetChanged();
-                                }
-                            });
-
-                            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-
-                            builder.show();
-                        }
-
-                    });
-
-
-                    // TODO add photo if there are no deliveries
-
-                    listDeliveries_LST_deliveries.setLayoutManager(new LinearLayoutManager(context));
-                    listDeliveries_LST_deliveries.setAdapter(adapter_delivery);
+                        });
+                        listDeliveries_LST_deliveries.setLayoutManager(new LinearLayoutManager(context));
+                        listDeliveries_LST_deliveries.setAdapter(adapter_delivery);
+                    }
 
                 }
                 setNoDeliveries();
@@ -111,7 +97,6 @@ public class Activity_ListDeliveries extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                // Failed to read value
                 Log.w("cccc", "Failed to read value.", error.toException());
             }
         });
@@ -149,6 +134,10 @@ public class Activity_ListDeliveries extends AppCompatActivity {
     public void ClickHistory(View view) {
 
         MainActivity.redirectActivity(this, Activity_History.class);
+    }
+
+    public void ClickCanceled(View view) {
+        MainActivity.redirectActivity(this, Activity_Cancelled.class);
     }
 
 

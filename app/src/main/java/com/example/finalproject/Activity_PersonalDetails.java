@@ -50,6 +50,10 @@ public class Activity_PersonalDetails extends AppCompatActivity {
         MainActivity.redirectActivity(this, Activity_History.class);
     }
 
+    public void ClickCanceled(View view) {
+        MainActivity.redirectActivity(this, Activity_Cancelled.class);
+    }
+
 
     public void ClickPersonalDetails(View view) {
         MainActivity.closeDrawer(drawerLayout);

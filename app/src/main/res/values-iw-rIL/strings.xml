@@ -8,6 +8,7 @@
     <string name="ok">אישור</string>
     <string name="list_deliveries">רשימת נקודות משלוח</string>
     <string name="history">היסטוריה</string>
+    <string name="canceled">הזמנות מבוטלות</string>
     <string name="map">מפה</string>
     <string name="personal_details">פרטים אישיים</string>
     <string name="log_off">התנתקות</string>

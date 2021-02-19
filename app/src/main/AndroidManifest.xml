@@ -15,10 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
+        <activity android:name=".Activity_Cancelled"></activity>
         <activity
             android:name=".Activity_AddDelivery"
-            android:theme="@style/Theme.AppCompat.Dialog.Alert"
-            android:label="@string/add_package"/>
+            android:label="@string/add_package"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
         <activity android:name=".Activity_Login" />
         <activity android:name=".Activity_ListDeliveries" />
         <activity android:name=".Activity_PersonalDetails" />

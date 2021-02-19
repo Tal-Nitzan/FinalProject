@@ -37,14 +37,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:text="Name of receiver: "
+                        android:textSize="15sp"
+                        android:text="Name of receiver - "
                         android:textColor="@color/white"/>
 
                     <TextView
                         android:id="@+id/recycle_LBL_name"
                         android:layout_width="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="15sp"
                         android:layout_height="wrap_content"
                         android:text="theName"
                         android:textColor="@color/white"/>
@@ -53,28 +53,7 @@
 
                     </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:text="Address: "
-                        android:textColor="@color/white"/>
 
-                    <TextView
-                        android:id="@+id/recycle_LBL_address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:text="theAddress"
-                        android:textColor="@color/white"/>
-
-
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -83,15 +62,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:text="Phone number: "
+                        android:textSize="15sp"
+                        android:text="Phone number - "
                         android:textColor="@color/white"/>
 
                     <TextView
                         android:id="@+id/recycle_LBL_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="15sp"
                         android:text="thePhone"
                         android:textColor="@color/white"/>
 
@@ -103,20 +82,50 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="Address - "
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:id="@+id/recycle_LBL_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="theAddress"
+                        android:textColor="@color/white"/>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Package weight: "
-                        android:textSize="10sp"
+                        android:text="Package weight - "
+                        android:textSize="15sp"
                         android:textColor="@color/white"/>
 
                     <TextView
                         android:id="@+id/recycle_LBL_weight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="15sp"
                         android:text="theWeight"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text=" KG"
                         android:textColor="@color/white"/>
 
 

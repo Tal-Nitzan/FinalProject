@@ -16,6 +16,8 @@ public class Utils {
 
     public Utils() {}
 
+    static String[] databaseStates = {"pending deliveries", "completed deliveries", "cancelled deliveries"};
+
     public static void logout(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Logout");

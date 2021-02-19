@@ -5,27 +5,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity_History">
+    tools:context=".Activity_Cancelled">
 
     <TextView
-        android:id="@+id/history_LBL_noDeliveries"
+        android:id="@+id/cancelled_LBL_noDeliveries"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:gravity="center"
-        android:text="There are no completed deliveries!"
+        android:text="There are no cancelled deliveries!"
         android:textSize="28sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <include
             layout="@layout/main_toolbar"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/history_LST_deliveries"
+            android:id="@+id/cancelled_LST_deliveries"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/list_deliveries"/>
