@@ -7,6 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".Activity_ListDeliveries">
 
+    <TextView
+        android:id="@+id/listDeliveries_LBL_noDeliveries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:text="There are no deliveries today!\n Go to the beach :)"
+        android:textSize="28sp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

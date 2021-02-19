@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class Delivery {
 
+    String id;
     String receiverName;
     String address;
     String phoneNumber;
@@ -15,6 +16,14 @@ public class Delivery {
     String deliveryDateString;
 
     public Delivery() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Date getDeliveryDate() {
