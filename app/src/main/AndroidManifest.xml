@@ -23,7 +23,7 @@
         <activity android:name=".Activity_Login" />
         <activity android:name=".Activity_ListDeliveries" />
         <activity android:name=".Activity_PersonalDetails" />
-        <activity android:name=".Activity_History" />
+        <activity android:name=".Activity_CompletedDeliveries" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

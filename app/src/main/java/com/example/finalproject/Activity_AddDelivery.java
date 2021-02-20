@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.Autocomplete;
@@ -41,6 +42,8 @@ public class Activity_AddDelivery extends AppCompatActivity {
     private TextInputLayout addDelivery_EDT_inputWeight;
 
     String address;
+    double latitude;
+    double longitude;
 
 
     @Override
@@ -108,7 +111,9 @@ public class Activity_AddDelivery extends AppCompatActivity {
                 .setWeight(weight)
                 .setDeliveryDateString(todayDateString)
                 .setDeliveryDate(todayDate)
-                .setState(STATE.PENDING);
+                .setState(STATE.PENDING)
+                .setLatitude(latitude)
+                .setLongitude(longitude);
         mDatabase.child("users").child(uid).child(Utils.databaseStates[0]).push().setValue(delivery);
         Intent intent = new Intent(Activity_AddDelivery.this, MainActivity.class);
         startActivity(intent);
@@ -122,6 +127,8 @@ public class Activity_AddDelivery extends AppCompatActivity {
            Place place = Autocomplete.getPlaceFromIntent(data);
            editText.setText(place.getAddress());
            address = place.getAddress();
+           latitude = place.getLatLng().latitude;
+           longitude = place.getLatLng().longitude;
         } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
             Status status = Autocomplete.getStatusFromIntent(data);
             Toast.makeText(getApplicationContext(), status.getStatusMessage(),Toast.LENGTH_LONG).show();

@@ -8,6 +8,15 @@
     tools:context=".Activity_Cancelled">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancelled deliveries"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:textSize="30sp"/>
+
+    <TextView
         android:id="@+id/cancelled_LBL_noDeliveries"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

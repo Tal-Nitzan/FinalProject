@@ -6,7 +6,7 @@
     <string name="text_location_permission">Please allow location services in order to use the Application</string>
     <string name="ok">Accept</string>
     <string name="list_deliveries">Delivery List</string>
-    <string name="history">History</string>
+    <string name="completed">Completed</string>
     <string name="canceled">Canceled</string>
     <string name="map">Map</string>
     <string name="personal_details">Personal Details</string>

@@ -2,6 +2,8 @@ package com.example.finalproject;
 
 import android.location.Location;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -18,6 +20,8 @@ public class Delivery {
     Date deliveryDate;
     String deliveryDateString;
     STATE state;
+    double latitude;
+    double longitude;
 
 
     public Delivery() {
@@ -91,6 +95,24 @@ public class Delivery {
 
     public Delivery setWeight(float weight) {
         this.weight = weight;
+        return this;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public Delivery setLatitude(double latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public Delivery setLongitude(double longitude) {
+        this.longitude = longitude;
         return this;
     }
 }

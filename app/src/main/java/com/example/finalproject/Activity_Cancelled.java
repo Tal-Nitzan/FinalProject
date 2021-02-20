@@ -30,10 +30,13 @@ public class Activity_Cancelled extends AppCompatActivity {
     ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
     private RecyclerView cancelled_LST_deliveries;
     private TextView cancelled_LBL_noDeliveries;
+    static int numOfCancelledDeliveries = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.removeStatusBar(this);
+
         setContentView(R.layout.activity_cancelled);
         cancelled_LST_deliveries = findViewById(R.id.cancelled_LST_deliveries);
         cancelled_LBL_noDeliveries = findViewById(R.id.cancelled_LBL_noDeliveries);
@@ -56,6 +59,7 @@ public class Activity_Cancelled extends AppCompatActivity {
                     Delivery delivery = postSnapshot.getValue(Delivery.class);
                     delivery.setId(postSnapshot.getKey());
                     if (delivery.getState() == STATE.CANCELLED) {
+                        numOfCancelledDeliveries++;
                         deliveries.add(delivery);
                         Adapter_Delivery adapter_delivery = new Adapter_Delivery(context, deliveries);
                         cancelled_LST_deliveries.setLayoutManager(new LinearLayoutManager(context));
@@ -107,7 +111,7 @@ public class Activity_Cancelled extends AppCompatActivity {
     }
 
     public void ClickHistory(View view) {
-        MainActivity.redirectActivity(this, Activity_History.class);
+        MainActivity.redirectActivity(this, Activity_CompletedDeliveries.class);
     }
 
 

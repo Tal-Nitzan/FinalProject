@@ -1,26 +1,44 @@
 package com.example.finalproject;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class Activity_PersonalDetails extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
+    TextView personalDetails_LBL_gmail;
+    TextView personalDetails_LBL_activeDeliveries;
+    TextView personalDetails_LBL_completedDeliveries;
+    TextView personalDetails_LBL_canceledDeliveries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.removeStatusBar(this);
+
         setContentView(R.layout.activity_personal_details);
 
+        findViews();
+        initViews();
+    }
 
+    private void findViews() {
         drawerLayout = findViewById(R.id.drawer_layout);
+        personalDetails_LBL_gmail = findViewById(R.id.personalDetails_LBL_gmail);
+        personalDetails_LBL_activeDeliveries = findViewById(R.id.personalDetails_LBL_activeDeliveries);
+        personalDetails_LBL_completedDeliveries = findViewById(R.id.personalDetails_LBL_completedDeliveries);
+        personalDetails_LBL_canceledDeliveries = findViewById(R.id.personalDetails_LBL_canceledDeliveries);
+    }
+
+    private void initViews() {
+        personalDetails_LBL_gmail.setText(MainActivity.currentUser.getGmailAddress());
+        personalDetails_LBL_activeDeliveries.setText(String.valueOf(MainActivity.currentUser.getNumOfActiveDeliveries()));
+        personalDetails_LBL_completedDeliveries.setText(String.valueOf(MainActivity.currentUser.getNumOfCompletedDeliveries()));
+        personalDetails_LBL_canceledDeliveries.setText(String.valueOf(MainActivity.currentUser.getNumOfCancelledDeliveries()));
     }
 
     public void ClickMenu(View view) {
@@ -47,7 +65,7 @@ public class Activity_PersonalDetails extends AppCompatActivity {
 
     public void ClickHistory(View view) {
 
-        MainActivity.redirectActivity(this, Activity_History.class);
+        MainActivity.redirectActivity(this, Activity_CompletedDeliveries.class);
     }
 
     public void ClickCanceled(View view) {

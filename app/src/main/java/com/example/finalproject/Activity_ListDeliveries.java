@@ -1,27 +1,18 @@
 package com.example.finalproject;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Activity_ListDeliveries extends AppCompatActivity {
@@ -39,10 +29,13 @@ public class Activity_ListDeliveries extends AppCompatActivity {
     private RecyclerView listDeliveries_LST_deliveries;
     private TextView listDeliveries_LBL_noDeliveries;
     ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
+    static int numOfActiveDeliveries = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.removeStatusBar(this);
+
         setContentView(R.layout.activity_list_deliveries);
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -64,6 +57,7 @@ public class Activity_ListDeliveries extends AppCompatActivity {
                     Delivery delivery = postSnapshot.getValue(Delivery.class);
                     delivery.setId(postSnapshot.getKey());
                     if (delivery.getState() == STATE.PENDING) {
+                        numOfActiveDeliveries++;
                         deliveries.add(delivery);
                         Adapter_Delivery adapter_delivery = new Adapter_Delivery(context, deliveries);
                         adapter_delivery.setClickListener(new Adapter_Delivery.MyItemClickListener() {
@@ -80,6 +74,7 @@ public class Activity_ListDeliveries extends AppCompatActivity {
                                         newRef.push().setValue(delivery);
                                         myRef.child(deliveries.get(position).getId()).removeValue();
                                         deliveries.remove(position);
+                                        numOfActiveDeliveries--;
                                         adapter_delivery.notifyDataSetChanged();
                                     }
                                 });
@@ -133,7 +128,7 @@ public class Activity_ListDeliveries extends AppCompatActivity {
 
     public void ClickHistory(View view) {
 
-        MainActivity.redirectActivity(this, Activity_History.class);
+        MainActivity.redirectActivity(this, Activity_CompletedDeliveries.class);
     }
 
     public void ClickCanceled(View view) {

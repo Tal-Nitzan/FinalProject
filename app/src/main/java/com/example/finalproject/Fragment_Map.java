@@ -6,12 +6,15 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -23,6 +26,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.Objects;
 
 public class Fragment_Map extends SupportMapFragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
@@ -39,6 +51,28 @@ public class Fragment_Map extends SupportMapFragment implements OnMapReadyCallba
     public void onResume() {
         super.onResume();
         setUpMapIfNeeded();
+        setUpMarkers();
+    }
+
+    private void setUpMarkers() {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = firebaseUser.getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users").child(uid).child(Utils.databaseStates[0]);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Delivery delivery = postSnapshot.getValue(Delivery.class);
+                    delivery.setId(postSnapshot.getKey());
+                    mGoogleMap.addMarker(new MarkerOptions().position(new LatLng(delivery.getLatitude(), delivery.getLongitude())).title(delivery.getReceiverName() + " - " + delivery.getPhoneNumber()));
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("cccc", "Failed to read value.", error.toException());
+            }
+        });
     }
 
     private void setUpMapIfNeeded() {
@@ -114,7 +148,7 @@ public class Fragment_Map extends SupportMapFragment implements OnMapReadyCallba
     public void onLocationChanged(Location location)
     {
         if (!firstLocationUpdateFlag) {
-            moveCameraToCurrentLocation(location, 13);
+            moveCameraToCurrentLocation(location, 15.7f);
             firstLocationUpdateFlag = true;
         }
 

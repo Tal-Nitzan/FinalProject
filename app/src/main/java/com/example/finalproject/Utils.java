@@ -3,14 +3,24 @@ package com.example.finalproject;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Utils {
 
@@ -51,5 +61,11 @@ public class Utils {
         });
 
         builder.show();
+    }
+
+    public static void removeStatusBar(Activity activity) {
+        // Remove status bar
+        activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 }

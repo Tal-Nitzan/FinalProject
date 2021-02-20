@@ -1,17 +1,11 @@
 package com.example.finalproject;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +13,6 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Activity_History extends AppCompatActivity {
+public class Activity_CompletedDeliveries extends AppCompatActivity {
 
     private DatabaseReference mDatabase; //test
 
@@ -36,11 +29,14 @@ public class Activity_History extends AppCompatActivity {
     ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
     private RecyclerView history_LST_deliveries;
     private TextView history_LBL_noDeliveries;
+    static int numOfCompletedDeliveries = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+        Utils.removeStatusBar(this);
+
+        setContentView(R.layout.activity_completed_deliveries);
         history_LST_deliveries = findViewById(R.id.history_LST_deliveries);
         history_LBL_noDeliveries = findViewById(R.id.history_LBL_noDeliveries);
 
@@ -62,6 +58,7 @@ public class Activity_History extends AppCompatActivity {
                     Delivery delivery = postSnapshot.getValue(Delivery.class);
                     delivery.setId(postSnapshot.getKey());
                     if (delivery.getState() == STATE.COMPLETED) {
+                        numOfCompletedDeliveries++;
                         deliveries.add(delivery);
                         Adapter_Delivery adapter_delivery = new Adapter_Delivery(context, deliveries);
                         history_LST_deliveries.setLayoutManager(new LinearLayoutManager(context));

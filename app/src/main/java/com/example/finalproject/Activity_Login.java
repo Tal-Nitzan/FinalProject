@@ -29,6 +29,7 @@ public class Activity_Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.removeStatusBar(this);
         setContentView(R.layout.activity_login);
 
 
