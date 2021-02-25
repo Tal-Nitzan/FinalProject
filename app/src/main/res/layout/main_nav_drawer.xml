@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tsquare Express"
+        android:text="@string/app_name"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textAlignment="center"
@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:onClick="ClickHistory">
+        android:onClick="ClickCompleted">
 
         <TextView
             android:layout_width="0dp"

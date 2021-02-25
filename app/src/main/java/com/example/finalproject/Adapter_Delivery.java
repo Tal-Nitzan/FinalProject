@@ -41,7 +41,6 @@ public class Adapter_Delivery  extends RecyclerView.Adapter<Adapter_Delivery.MyV
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Log.d("pttt", "Position = " + position);
         Delivery m = deliveries.get(position);
         holder.recycle_LBL_name.setText(m.getReceiverName());
         holder.recycle_LBL_address.setText(m.getAddress());

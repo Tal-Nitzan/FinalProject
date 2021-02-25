@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Activity_CompletedDeliveries extends AppCompatActivity {
+public class Activity_Completed extends AppCompatActivity {
 
     private DatabaseReference mDatabase; //test
 
@@ -36,7 +36,7 @@ public class Activity_CompletedDeliveries extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Utils.removeStatusBar(this);
 
-        setContentView(R.layout.activity_completed_deliveries);
+        setContentView(R.layout.activity_completed);
         history_LST_deliveries = findViewById(R.id.history_LST_deliveries);
         history_LBL_noDeliveries = findViewById(R.id.history_LBL_noDeliveries);
 
@@ -105,7 +105,7 @@ public class Activity_CompletedDeliveries extends AppCompatActivity {
 
 
 
-    public void ClickHistory(View view) {
+    public void ClickCompleted(View view) {
         MainActivity.closeDrawer(drawerLayout);
     }
 

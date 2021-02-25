@@ -170,8 +170,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void ClickHistory(View view) {
-        redirectActivity(this, Activity_CompletedDeliveries.class);
+    public void ClickCompleted(View view) {
+        redirectActivity(this, Activity_Completed.class);
     }
 
 

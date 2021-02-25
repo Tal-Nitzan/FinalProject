@@ -110,8 +110,8 @@ public class Activity_Cancelled extends AppCompatActivity {
         MainActivity.closeDrawer(drawerLayout);
     }
 
-    public void ClickHistory(View view) {
-        MainActivity.redirectActivity(this, Activity_CompletedDeliveries.class);
+    public void ClickCompleted(View view) {
+        MainActivity.redirectActivity(this, Activity_Completed.class);
     }
 
 

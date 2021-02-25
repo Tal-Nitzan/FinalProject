@@ -63,9 +63,9 @@ public class Activity_PersonalDetails extends AppCompatActivity {
 
 
 
-    public void ClickHistory(View view) {
+    public void ClickCompleted(View view) {
 
-        MainActivity.redirectActivity(this, Activity_CompletedDeliveries.class);
+        MainActivity.redirectActivity(this, Activity_Completed.class);
     }
 
     public void ClickCanceled(View view) {
