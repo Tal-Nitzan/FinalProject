@@ -34,16 +34,14 @@ import java.util.List;
 public class Activity_AddDelivery extends AppCompatActivity {
 
     private DatabaseReference mDatabase; //test
-
-    EditText editText;
-    Button addDelivery_BTN_submit;
+    private EditText editText;
+    private Button addDelivery_BTN_submit;
     private TextInputLayout addDelivery_EDT_inputName;
     private TextInputLayout addDelivery_EDT_inputPhone;
     private TextInputLayout addDelivery_EDT_inputWeight;
-
-    String address;
-    double latitude;
-    double longitude;
+    private String address;
+    private double latitude;
+    private double longitude;
 
 
     @Override

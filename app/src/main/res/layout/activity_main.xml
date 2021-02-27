@@ -35,25 +35,23 @@
                 android:id="@+id/records_LAY_map"
                 android:layout_width="match_parent"
                 android:layout_height="620dp"
-                android:layout_weight="2"/>
+                android:layout_weight="2" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/main_btn_addPackage"
-
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
-                android:layout_weight="1"
                 android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:shadowColor="@color/black"
                 android:text="@string/add_package"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:cornerRadius="50dp"
                 app:iconGravity="end"
                 app:iconTint="@color/black"
-                app:strokeColor="@color/black"
-                android:shadowColor="@color/black"
-                />
+                app:strokeColor="@color/black" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/splash_BTN_track"
@@ -69,8 +67,8 @@
                 app:iconGravity="end"
                 app:iconTint="@color/black"
                 app:strokeColor="@color/black"
-                android:shadowColor="@color/black"
-                />
+                android:shadowColor="@color/black"/>
+
         </LinearLayout>
 
 

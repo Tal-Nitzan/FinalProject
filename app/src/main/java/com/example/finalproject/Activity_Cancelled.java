@@ -26,8 +26,8 @@ public class Activity_Cancelled extends AppCompatActivity {
 
     private DatabaseReference mDatabase; //test
 
-    DrawerLayout drawerLayout;
-    ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
+    private DrawerLayout drawerLayout;
+    private ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
     private RecyclerView cancelled_LST_deliveries;
     private TextView cancelled_LBL_noDeliveries;
     static int numOfCancelledDeliveries = 0;
@@ -87,36 +87,36 @@ public class Activity_Cancelled extends AppCompatActivity {
 
 
     public void ClickMenu(View view) {
-        MainActivity.openDrawer(drawerLayout);
+        DrawerUtils.openDrawer(drawerLayout);
     }
 
     public void ClickLogo(View view) {
-        MainActivity.closeDrawer(drawerLayout);
+        DrawerUtils.closeDrawer(drawerLayout);
     }
 
     public void ClickMap(View view) {
-        MainActivity.redirectActivity(this, MainActivity.class);
+        Utils.redirectActivity(this, MainActivity.class);
     }
 
 
     public void ClickList(View view) {
 
-        MainActivity.redirectActivity(this, Activity_ListDeliveries.class);
+        Utils.redirectActivity(this, Activity_ListDeliveries.class);
     }
 
 
 
     public void ClickCanceled(View view) {
-        MainActivity.closeDrawer(drawerLayout);
+        DrawerUtils.closeDrawer(drawerLayout);
     }
 
     public void ClickCompleted(View view) {
-        MainActivity.redirectActivity(this, Activity_Completed.class);
+        Utils.redirectActivity(this, Activity_Completed.class);
     }
 
 
     public void ClickPersonalDetails(View view) {
-        MainActivity.redirectActivity(this, Activity_PersonalDetails.class);
+        Utils.redirectActivity(this, Activity_PersonalDetails.class);
     }
 
     public void ClickLogOff(View view) {
@@ -127,6 +127,6 @@ public class Activity_Cancelled extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        MainActivity.closeDrawer(drawerLayout);
+        DrawerUtils.closeDrawer(drawerLayout);
     }
 }

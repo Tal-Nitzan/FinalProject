@@ -25,10 +25,10 @@ import java.util.ArrayList;
 
 public class Activity_ListDeliveries extends AppCompatActivity {
 
-    DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout;
     private RecyclerView listDeliveries_LST_deliveries;
     private TextView listDeliveries_LBL_noDeliveries;
-    ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
+    private ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
     static int numOfActiveDeliveries = 0;
 
     @Override
@@ -107,37 +107,37 @@ public class Activity_ListDeliveries extends AppCompatActivity {
 
     public void ClickMenu(View view) {
 
-        MainActivity.openDrawer(drawerLayout);
+        DrawerUtils.openDrawer(drawerLayout);
 
     }
 
     public void ClickLogo(View view) {
-        MainActivity.closeDrawer(drawerLayout);
+        DrawerUtils.closeDrawer(drawerLayout);
     }
 
     public void ClickMap(View view) {
-        MainActivity.redirectActivity(this, MainActivity.class);
+        Utils.redirectActivity(this, MainActivity.class);
     }
 
 
     public void ClickList(View view) {
-        MainActivity.closeDrawer(drawerLayout);
+        DrawerUtils.closeDrawer(drawerLayout);
     }
 
 
 
     public void ClickCompleted(View view) {
 
-        MainActivity.redirectActivity(this, Activity_Completed.class);
+        Utils.redirectActivity(this, Activity_Completed.class);
     }
 
     public void ClickCanceled(View view) {
-        MainActivity.redirectActivity(this, Activity_Cancelled.class);
+        Utils.redirectActivity(this, Activity_Cancelled.class);
     }
 
 
     public void ClickPersonalDetails(View view) {
-        MainActivity.redirectActivity(this, Activity_PersonalDetails.class);
+        Utils.redirectActivity(this, Activity_PersonalDetails.class);
     }
 
     public void ClickLogOff(View view) {
@@ -148,6 +148,6 @@ public class Activity_ListDeliveries extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        MainActivity.closeDrawer(drawerLayout);
+        DrawerUtils.closeDrawer(drawerLayout);
     }
 }

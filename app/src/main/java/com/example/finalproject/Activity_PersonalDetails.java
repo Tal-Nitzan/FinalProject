@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 public class Activity_PersonalDetails extends AppCompatActivity {
 
-    DrawerLayout drawerLayout;
-    TextView personalDetails_LBL_gmail;
-    TextView personalDetails_LBL_activeDeliveries;
-    TextView personalDetails_LBL_completedDeliveries;
-    TextView personalDetails_LBL_canceledDeliveries;
+    private DrawerLayout drawerLayout;
+    private TextView personalDetails_LBL_gmail;
+    private TextView personalDetails_LBL_activeDeliveries;
+    private TextView personalDetails_LBL_completedDeliveries;
+    private TextView personalDetails_LBL_canceledDeliveries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,73 +43,48 @@ public class Activity_PersonalDetails extends AppCompatActivity {
 
     public void ClickMenu(View view) {
 
-        MainActivity.openDrawer(drawerLayout);
+        DrawerUtils.openDrawer(drawerLayout);
 
     }
 
     public void ClickLogo(View view) {
-        MainActivity.closeDrawer(drawerLayout);
+        DrawerUtils.closeDrawer(drawerLayout);
     }
 
     public void ClickMap(View view) {
-        MainActivity.redirectActivity(this, MainActivity.class);
+        Utils.redirectActivity(this, MainActivity.class);
     }
 
 
     public void ClickList(View view) {
 
-        MainActivity.redirectActivity(this, Activity_ListDeliveries.class);
+        Utils.redirectActivity(this, Activity_ListDeliveries.class);
     }
 
 
 
     public void ClickCompleted(View view) {
 
-        MainActivity.redirectActivity(this, Activity_Completed.class);
+        Utils.redirectActivity(this, Activity_Completed.class);
     }
 
     public void ClickCanceled(View view) {
-        MainActivity.redirectActivity(this, Activity_Cancelled.class);
+        Utils.redirectActivity(this, Activity_Cancelled.class);
     }
 
 
     public void ClickPersonalDetails(View view) {
-        MainActivity.closeDrawer(drawerLayout);
+        DrawerUtils.closeDrawer(drawerLayout);
     }
 
     public void ClickLogOff(View view) {
         Utils.logout(this);
     }
 
-//    public void logout(Activity activity) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-//        builder.setTitle("Logout");
-//
-//        builder.setMessage("Are you sure you want to log out ?");
-//
-//        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                Intent intent = new Intent(activity, Activity_Login.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//
-//        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.dismiss();
-//            }
-//        });
-//
-//        builder.show();
-//    }
 
     @Override
     protected void onPause() {
         super.onPause();
-        MainActivity.closeDrawer(drawerLayout);
+        DrawerUtils.closeDrawer(drawerLayout);
     }
 }

@@ -39,12 +39,12 @@ import java.util.Objects;
 
 public class Fragment_Map extends SupportMapFragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
-    GoogleMap mGoogleMap;
-    SupportMapFragment mapFrag;
-    LocationRequest mLocationRequest;
-    GoogleApiClient mGoogleApiClient;
-    boolean firstLocationUpdateFlag = false;
-    boolean mapTracking = false;
+    private GoogleMap mGoogleMap;
+    private SupportMapFragment mapFrag;
+    private LocationRequest mLocationRequest;
+    private GoogleApiClient mGoogleApiClient;
+    private boolean firstLocationUpdateFlag = false;
+    private boolean mapTracking = false;
 
 
     @Override

@@ -3,10 +3,10 @@ package com.example.finalproject;
 import android.net.Uri;
 
 public class User {
-    String gmailAddress;
-    int numOfActiveDeliveries;
-    int numOfCancelledDeliveries;
-    int numOfCompletedDeliveries;
+    private String gmailAddress;
+    private int numOfActiveDeliveries;
+    private int numOfCancelledDeliveries;
+    private int numOfCompletedDeliveries;
 
     User() {}
 

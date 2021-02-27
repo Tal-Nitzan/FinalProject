@@ -24,13 +24,6 @@
         <activity android:name=".Activity_ListDeliveries" />
         <activity android:name=".Activity_PersonalDetails" />
         <activity android:name=".Activity_Completed" />
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDuooLeJ259V3F_V4Eh9Z-qFK169XFqXI8" />
-
-        <uses-library android:name="com.google.android.maps" />
-
         <activity android:name=".Activity_Menu" />
         <activity android:name=".Activity_Splash">
             <intent-filter>
@@ -40,6 +33,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDuooLeJ259V3F_V4Eh9Z-qFK169XFqXI8" />
+        <uses-library android:name="com.google.android.maps" />
     </application>
 
 </manifest>

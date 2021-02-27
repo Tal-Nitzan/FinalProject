@@ -12,16 +12,16 @@ enum STATE {PENDING,COMPLETED, CANCELLED}
 
 public class Delivery {
 
-    String id;
-    String receiverName;
-    String address;
-    String phoneNumber;
-    float weight;
-    Date deliveryDate;
-    String deliveryDateString;
-    STATE state;
-    double latitude;
-    double longitude;
+    private String id;
+    private String receiverName;
+    private String address;
+    private String phoneNumber;
+    private float weight;
+    private Date deliveryDate;
+    private String deliveryDateString;
+    private STATE state;
+    private double latitude;
+    private double longitude;
 
 
     public Delivery() {

@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/road" />
+        android:src="@drawable/road"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.0"
-        android:background="#000000" />
+        android:background="#000000"/>
 
     <ImageView
         android:layout_width="match_parent"

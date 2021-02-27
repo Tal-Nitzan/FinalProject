@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     static User currentUser;
     private Fragment_Map fragment_map;
-    LocationManager locationManager;
-    String provider;
+    private LocationManager locationManager;
+    private String provider;
     private DrawerLayout drawerLayout;
     private MaterialButton splash_BTN_track;
     private MaterialButton main_btn_addPackage;
@@ -142,45 +142,34 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void ClickMenu(View view) {
-        openDrawer(drawerLayout);
-    }
-
-    public static void openDrawer(DrawerLayout drawerLayout) {
-        drawerLayout.openDrawer(GravityCompat.START);
+        DrawerUtils.openDrawer(drawerLayout);
     }
 
     public void ClickLogo(View view) {
-        closeDrawer(drawerLayout);
-    }
-
-    public static void closeDrawer(DrawerLayout drawerLayout) {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }
-
+        DrawerUtils.closeDrawer(drawerLayout);
     }
 
     public void ClickMap(View view) {
-        closeDrawer(drawerLayout);
+        DrawerUtils.closeDrawer(drawerLayout);
     }
 
     public void ClickList(View view) {
-        redirectActivity(this, Activity_ListDeliveries.class);
+        Utils.redirectActivity(this, Activity_ListDeliveries.class);
     }
 
 
 
     public void ClickCompleted(View view) {
-        redirectActivity(this, Activity_Completed.class);
+        Utils.redirectActivity(this, Activity_Completed.class);
     }
 
 
     public void ClickCanceled(View view) {
-        redirectActivity(this, Activity_Cancelled.class);
+        Utils.redirectActivity(this, Activity_Cancelled.class);
     }
 
     public void ClickPersonalDetails(View view) {
-        redirectActivity(this, Activity_PersonalDetails.class);
+        Utils.redirectActivity(this, Activity_PersonalDetails.class);
     }
 
     public void ClickLogOff(View view) {
@@ -188,15 +177,9 @@ public class MainActivity extends AppCompatActivity {
         Log.d("pttt", "got here");
     }
 
-    public static void redirectActivity(Activity activity, Class aClass) {
-        Intent intent = new Intent(activity, aClass);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        activity.startActivity(intent);
-    }
-
     @Override
     protected void onPause() {
         super.onPause();
-        closeDrawer(drawerLayout);
+        DrawerUtils.closeDrawer(drawerLayout);
     }
 }

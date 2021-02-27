@@ -22,10 +22,6 @@ public class Activity_Login extends AppCompatActivity {
 
     private final int RC_SIGN_IN = 1234;
 
-    // https://firebase.google.com/docs/auth/android/firebaseui?authuser=0
-    // https://github.com/firebase/FirebaseUI-Android/blob/master/auth/README.md
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
