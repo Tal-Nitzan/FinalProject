@@ -80,7 +80,6 @@ public class Activity_Splash extends AppCompatActivity {
                         }
                         startApp();
                     }
-
                     @Override
                     public void onAnimationCancel(Animator animation) {
 

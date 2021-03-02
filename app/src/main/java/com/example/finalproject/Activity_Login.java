@@ -49,11 +49,9 @@ public class Activity_Login extends AppCompatActivity {
                         .setAvailableProviders(Arrays.asList(
                                 new AuthUI.IdpConfig.GoogleBuilder().build()
                         ))
-//                        .setLogo(R.drawable.ic_logo_s) #TODO make logo
                         .setTosAndPrivacyPolicyUrls(
                                 "https://example.com/terms.html",
                                 "https://example.com/privacy.html")
-//                        .setTheme(R.style.GreenTheme)
                         .setTheme(R.style.AppThemeFirebaseAuth)
                         .build(),
                 RC_SIGN_IN);
