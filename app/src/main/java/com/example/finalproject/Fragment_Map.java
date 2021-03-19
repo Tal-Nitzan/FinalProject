@@ -235,12 +235,14 @@ public class Fragment_Map extends SupportMapFragment implements OnMapReadyCallba
 
     public void toggleTracking() {
         mapTracking = !mapTracking;
-        Toast toast = new Toast(getActivity());
+        Toast toast;
         if (mapTracking) {
-            toast.setText("Tracking is ON");
+//            toast.setText("Tracking is ON");
+            toast = Toast.makeText(getActivity(), "Tracking is ON", 3);
             toast.show();
         } else {
-            toast.setText("Tracking is OFF");
+//            toast.setText("Tracking is OFF");
+            toast = Toast.makeText(getActivity(), "Tracking is OFF", 3);
             toast.show();
         }
     }
